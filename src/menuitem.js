@@ -56,6 +56,17 @@ class MenuItem {
                 break;
 
             case KeyCode.TAB:
+                if (this.isLastPopup() && this.isLastItem()) {
+                    if (this.menu) {
+                        this.menu.close(true);
+                    }
+                    flag = false;
+                } else {
+                    this.menu.setFocusToNextItem(this);
+                    flag = true;
+                }
+                break;
+
             case KeyCode.DOWN:
                 this.menu.setFocusToNextItem(this);
                 flag = true;
@@ -80,6 +91,14 @@ class MenuItem {
             event.stopPropagation();
             event.preventDefault();
         }
+    }
+
+    isLastPopup() {
+        return this.menu.controller.menu.menubarItems.indexOf(this.menu.controller) === this.menu.controller.menu.menubarItems.length -1;
+    }
+
+    isLastItem() {
+        return this.menu.menuitems.indexOf(this) === this.menu.menuitems.length -1;
     }
 }
 

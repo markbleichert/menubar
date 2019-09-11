@@ -59,16 +59,13 @@ class MenubarItem {
                 break;
 
             case KeyCode.TAB:
-                if (this.isLastItem()) {
-                    if (this.popupMenu) {
-                        this.popupMenu.close(true);
-                    }
-                    flag = false;
+                if (this.popupMenu) {
+                    this.popupMenu.open();
+                    this.popupMenu.setFocusToFirstItem();
                 } else {
                     this.menu.setFocusToNextItem(this);
-                    flag = true;
                 }
-
+                flag = true;
                 break;
 
             case KeyCode.RIGHT:
