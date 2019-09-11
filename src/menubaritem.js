@@ -111,13 +111,12 @@ class MenubarItem {
     }
 
     handleFocus(event) {
+        this.hasHover = true;
         this.menu.setFocusToItem(this);
     }
 
     handleBlur(event) {
-        if (this.popupMenu) {
-            setTimeout(this.popupMenu.close.bind(this.popupMenu, false), 200);
-        }
+        this.hasHover = false;
     }
 
     handleMouseover(event) {
@@ -131,6 +130,11 @@ class MenubarItem {
         if (this.popupMenu) {
             setTimeout(this.popupMenu.close.bind(this.popupMenu, false), 200);
         }
+    }
+
+    resetTabIndex() {
+        this.domNode.tabIndex = -1;
+        this.menu.menubarItems[0].domNode.tabIndex = 0;
     }
 }
 
