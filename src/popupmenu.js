@@ -78,7 +78,7 @@ class PopupMenu {
 
         this.domNode.style.display = 'block';
         this.domNode.style.position = 'absolute';
-        this.domNode.style.top = (rect.height + 10) + 'px';
+        this.domNode.style.top = (rect.height + 40) + 'px';
         this.domNode.style.zIndex = 100;
 
         this.controller.setExpanded(true);

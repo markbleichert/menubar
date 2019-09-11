@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<div id="skip-links" class="skip-links">
+<div id="skip-links" class="skip-links1">
     <div class="skip-links__content rfs2-container">
         <p>Skip to:</p>
         <ul class="skip-links__list">
@@ -37,7 +37,7 @@
 <header class="rabobank-header">
     <div class="rabobank-header-container rfs2-container">
         <div class="rabobank-header__logo">
-            <a class="rabobank-header__logo-image" href="/" title="Naar de Particulieren homepage">
+            <a class="rabobank-header__logo-image" href="/" title="Naar de Particulieren homepage" tabindex="0">
                 <svg width="130px" height="24px" viewBox="0 0 130 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="other/rfs2-rabobank-logo" fill="#000099">
@@ -47,7 +47,6 @@
                 </svg>
             </a>
         </div>
-
         <div class="rabobank-header__navigation-primary">
             <nav id="navigation-primary" class="navigation-primary" role="navigation" aria-label="Main navigation">
                 <ul id="main-navigation" class="navigation-primary__list" role="menubar" aria-labelledby="Main navigation">
@@ -171,20 +170,15 @@
                 </ul>
             </nav>
         </div>
-
         <div class="rabobank-header__navigation-secondary">
             <rfs2-input-search id="simple-example" minimum-match-characters-length="0" name="simple-example" onsearchIconClick="test" placeholder="Stel hier je vraag" input-text-value="Initial Value" search-icon-label="Zoek"></rfs2-input-search>
-            <rfs2-button class="rfs2-display-inline-block rfs2-space-inline-r-xs" color="secondary">Inloggen</rfs2-button>
+            <button class="rfs2-display-inline-block rfs2-space-inline-r-xs" color="secondary">Inloggen</button>
         </div>
 
     </div>
 </header>
 
 <script>
-    var elem = document.getElementsByClassName('rabobank-header__logo')[0];
-    elem.tabIndex = 0;
-    elem.focus();
-
     var menubar = new window.gs.MenuBar(document.getElementById('main-navigation'));
     menubar.init();
 </script>

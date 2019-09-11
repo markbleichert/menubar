@@ -42,12 +42,35 @@ class MenubarItem {
                 break;
 
             case event.shiftKey && KeyCode.TAB:
+                if (this.isFirstItem()) {
+                    if (this.popupMenu) {
+                        this.popupMenu.close(true);
+                    }
+                    flag = false;
+                } else {
+                    this.menu.setFocusToPreviousItem(this);
+                    flag = true;
+                }
+                break;
+
             case KeyCode.LEFT:
                 this.menu.setFocusToPreviousItem(this);
                 flag = true;
                 break;
 
             case KeyCode.TAB:
+                if (this.isLastItem()) {
+                    if (this.popupMenu) {
+                        this.popupMenu.close(true);
+                    }
+                    flag = false;
+                } else {
+                    this.menu.setFocusToNextItem(this);
+                    flag = true;
+                }
+
+                break;
+
             case KeyCode.RIGHT:
                 this.menu.setFocusToNextItem(this);
                 flag = true;
@@ -59,18 +82,6 @@ class MenubarItem {
                     this.popupMenu.setFocusToLastItem();
                     flag = true;
                 }
-                break;
-
-            case KeyCode.HOME:
-            case KeyCode.PAGEUP:
-                this.menu.setFocusToFirstItem();
-                flag = true;
-                break;
-
-            case KeyCode.END:
-            case KeyCode.PAGEDOWN:
-                this.menu.setFocusToLastItem();
-                flag = true;
                 break;
 
             case KeyCode.ESC:
@@ -85,6 +96,14 @@ class MenubarItem {
             event.stopPropagation();
             event.preventDefault();
         }
+    }
+
+    isLastItem() {
+        return this.menu.menubarItems.indexOf(this) === this.menu.menubarItems.length -1;
+    }
+
+    isFirstItem() {
+        return this.menu.menubarItems.indexOf(this) === 0;
     }
 
     setExpanded(value) {
