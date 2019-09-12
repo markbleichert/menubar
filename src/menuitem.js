@@ -22,7 +22,6 @@ class MenuItem {
     }
 
     handleKeydown(event) {
-
         let flag = false, clickEvent;
 
         switch (event.keyCode) {

@@ -7,6 +7,7 @@ class MenubarItem {
         this.domNode = domNode;
         this.popupMenu = false;
         this.hasHover = false;
+        this.hasFocus = false;
     }
 
     init() {
@@ -108,12 +109,12 @@ class MenubarItem {
     }
 
     handleFocus(event) {
-        this.hasHover = true;
+        this.hasFocus = true;
         this.menu.setFocusToItem(this);
     }
 
     handleBlur(event) {
-        this.hasHover = false;
+        this.hasFocus = false;
     }
 
     handleMouseover(event) {
@@ -123,6 +124,8 @@ class MenubarItem {
 
     handleMouseout(event) {
         this.hasHover = false;
+
+        this.resetTabIndex();
 
         if (this.popupMenu) {
             setTimeout(this.popupMenu.close.bind(this.popupMenu, false), 200);
